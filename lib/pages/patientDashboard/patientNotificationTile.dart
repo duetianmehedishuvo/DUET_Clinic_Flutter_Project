@@ -12,47 +12,20 @@ class PatNotTile extends StatelessWidget {
         ? "Your Appointment in ${appointment!.clinicName} is confirmed "
         : "Your Appointment in ${appointment!.clinicName} is pending";
     icon = appointment!.confirmed
-        ? const Icon(
-            Icons.check_box,
-            color: Colors.green,
-            size: 30,
-          )
-        : const Icon(
-            Icons.pending_actions,
-            color: Colors.red,
-            size: 30,
-          );
+        ? const Icon(Icons.check_box, color: Colors.green, size: 30)
+        : const Icon(Icons.pending_actions, color: Colors.red, size: 30);
   }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => AppointmentFormStatus(
-                      appointment: appointment!,
-                    )));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => AppointmentFormStatus(appointment: appointment!)));
       },
       child: Card(
-          // child: ListTile(
-          //   title: Text(
-          //     msg,
-          //   ),
-          // ),
           child: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Row(
-          children: [
-            Text(
-              msg,
-              style: const TextStyle(fontSize: 17),
-            ),
-            icon!,
-          ],
-        ),
-      )),
+              padding: const EdgeInsets.all(20.0),
+              child: Row(children: [Expanded(child: Text(msg, style: const TextStyle(fontSize: 17))), icon!]))),
     );
   }
 }

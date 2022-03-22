@@ -11,6 +11,7 @@ class SignInPage extends StatefulWidget {
 
 class _SignInPageState extends State<SignInPage> {
   bool isLoading = false;
+
   void toggleLoading() {
     setState(() => isLoading = !isLoading);
   }
@@ -22,7 +23,7 @@ class _SignInPageState extends State<SignInPage> {
         : Scaffold(
             body: SafeArea(
               child: Container(
-                color: Colors.indigo,
+                color: Colors.teal,
                 child: Column(
                   children: [
                     Stack(
@@ -37,33 +38,20 @@ class _SignInPageState extends State<SignInPage> {
                                 bottomRight: Radius.circular(40),
                               )),
                         ),
-                        Center(
-                          child: Image.asset(
-                            'assets/signin.png',
-                            height: 300,
-                          ),
-                        ),
+                        Center(child: Image.asset('assets/signin.png', height: 300)),
                       ],
                     ),
-                    const SizedBox(
-                      height: 70,
-                    ),
-                    Center(
-                      child: Text(
-                        "Welcome to duet_clinic!",
-                        style:
-                            TextStyle(color: Colors.amber[300], fontSize: 40),
+                    const SizedBox(height: 70),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 30),
+                      child: Center(
+                        child: FittedBox(
+                            child:
+                                Text("Welcome to DUET Clinic!", style: TextStyle(color: Colors.amber[300], fontSize: 40))),
                       ),
                     ),
-                    const SizedBox(
-                      height: 100,
-                    ),
-                    Center(
-                      child: SignButton(
-                        name: "Sign in With Google ",
-                        toggleLoading: toggleLoading,
-                      ),
-                    ),
+                    const SizedBox(height: 100),
+                    Center(child: SignButton(name: "Sign in With Google ", toggleLoading: toggleLoading)),
                   ],
                 ),
               ),
