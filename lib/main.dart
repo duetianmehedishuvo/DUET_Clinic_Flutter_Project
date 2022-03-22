@@ -24,10 +24,7 @@ class MyApp extends StatelessWidget {
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'DUET Clinic',
-          theme: ThemeData(
-            primarySwatch: Colors.teal,
-            visualDensity: VisualDensity.adaptivePlatformDensity,
-          ),
+          theme: ThemeData(primarySwatch: Colors.teal, visualDensity: VisualDensity.adaptivePlatformDensity),
           home: const Wrapper(),
         ));
   }

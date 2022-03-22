@@ -7,7 +7,7 @@ Using Flutter SDK:
 
 
 DUET Clinic is an android mobile application which can be downloaded from
-<a href="https://drive.google.com/file/d/1yRCC20N7Xf9I595xud7lE78xuDRyDCS8/view?usp=sharing">here.</a>
+<a href="https://duetacbd-my.sharepoint.com/:u:/g/personal/194016_student_duet_ac_bd/EZAxIbh7J3xIjiMps59NeM0BHN805ziJxKFsVFaktwlXQA?e=QJgHu3">here.</a>
 
 ## Problem Statement
 
@@ -21,19 +21,19 @@ Nowadays, whenever we fall ill, we visit the doctor's clinic with or without an 
 
 ### Patient's Dashboard
 
-- User's can view all the hospitals registered on the clinicO app. They can also search a clinic in the search box.
+- User's can view all the hospitals registered on the DUET Clinic app. They can also search a clinic in the search box.
 - On finding their doctor's clinic/hospital card on the dashboard, they can click on it and view the details of the hospital/clinic like doctor's details, qualification, work experience, specialization, clinic's/hospital's working hours, fees, etc.
 - Then, after viewing all of this, the user could book an appointment by filling in basic details like name, age, gender, symptoms or disease they are suffering from and they can also attach a proof of fee payment if they have already paid the fees.
 - In the notification section (which can be viewed by clicking on the bell icon in the bottom navigation bar), user can view the appointments under two sections -
     - Sub 1. Pending Appointment (requiring confirmation from the clinic side)
     - Sub 2. Confirmed Appointment (which are confirmed with an appointment number allotted to the patient)
-- Users can also view the current appointment number on the clinic's page on ClinicO.
+- Users can also view the current appointment number on the clinic's page on DUET Clinic.
 - Finally, if user wants to use the app for some other user, they can go to the user profile section from the bottom nav bar and click log out.
 
 ### Doctor's Dashboard
 
 - When the user chooses the role of doctor, they are given a form to fill in the detials of the doctors and their clinic/hospital.
-- These details will be viewed by the user on the hospital/clinic page in the ClinicO.
+- These details will be viewed by the user on the hospital/clinic page in the DUET Clinic.
 - Then, the clinic staff can go to appointment tab in the bottom navbar where they can view the patients who have requested an appointment with their details which they have      filled in the appointment form.
 - Then, the staff can give an appointment number to the patient based on their priorities and can confirm their appointment.
 - As the staff confirms the appointment, the corresponding patient is notified about the same.
