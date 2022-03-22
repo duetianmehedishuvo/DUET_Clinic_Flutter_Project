@@ -1,4 +1,4 @@
-import 'package:clinico/services/auth.dart';
+import 'package:duet_clinic/services/auth.dart';
 import 'package:flutter/material.dart';
 
 class SignButton extends StatelessWidget {

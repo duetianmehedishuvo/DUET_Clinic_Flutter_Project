@@ -1,16 +1,16 @@
 import 'dart:io';
-import 'package:clinico/pages/doctorDashboard/doctorNotificationTile.dart';
-import 'package:clinico/pages/patientDashboard/patientNotificationTile.dart';
+import 'package:duet_clinic/pages/doctorDashboard/doctorNotificationTile.dart';
+import 'package:duet_clinic/pages/patientDashboard/patientNotificationTile.dart';
 import 'package:uuid/uuid.dart';
-import 'package:clinico/model/appointment.dart';
-import 'package:clinico/model/user.dart';
-import 'package:clinico/pages/patientDashboard/hospitalCard.dart';
-import 'package:clinico/shared/loading.dart';
+import 'package:duet_clinic/model/appointment.dart';
+import 'package:duet_clinic/model/user.dart';
+import 'package:duet_clinic/pages/patientDashboard/hospitalCard.dart';
+import 'package:duet_clinic/shared/loading.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:image/image.dart' as Im;
+import 'package:image/image.dart' as im;
 
 var uuid = const Uuid();
 
@@ -120,9 +120,9 @@ class Backend{
   Future compressImage(_image, postId) async {
     Directory temDir = await getTemporaryDirectory();
     final temPath = temDir.path;
-    Im.Image? imageFile = Im.decodeImage(_image.readAsBytesSync());
+    im.Image? imageFile = im.decodeImage(_image.readAsBytesSync());
     final compressImageFile = File('$temPath/img_$postId.jpg')
-      ..writeAsBytesSync(Im.encodeJpg(imageFile!, quality: 85));
+      ..writeAsBytesSync(im.encodeJpg(imageFile!, quality: 85));
     _image = compressImageFile;
     return _image;
   }
@@ -137,7 +137,7 @@ class Backend{
     return downloadURL;
   }
 
-    Future<void> AddPatient(MyUser user)async{
+    Future<void> addPatient(MyUser user)async{
       await patientCollection.doc(user.uid).set({
         "name":user.displayName,
         "email":user.email,
@@ -260,7 +260,7 @@ class Backend{
       );
     }
 
-    SearchHospital(String key){
+    searchHospital(String key){
       return StreamBuilder(
         stream: doctorCollection.where("searchedText",isGreaterThanOrEqualTo: key).snapshots(),
         builder: (context,AsyncSnapshot  snapshot){

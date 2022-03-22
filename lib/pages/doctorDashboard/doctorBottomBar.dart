@@ -1,6 +1,6 @@
-import 'package:clinico/pages/doctorDashboard/doctorCounter.dart';
-import 'package:clinico/pages/doctorDashboard/doctorDashboard.dart';
-import 'package:clinico/pages/doctorDashboard/showbooking.dart';
+import 'package:duet_clinic/pages/doctorDashboard/doctorCounter.dart';
+import 'package:duet_clinic/pages/doctorDashboard/doctorDashboard.dart';
+import 'package:duet_clinic/pages/doctorDashboard/showbooking.dart';
 import 'package:flutter/material.dart';
 
 class DoctorBottom extends StatefulWidget {
@@ -44,7 +44,7 @@ class _DoctorBottomState extends State<DoctorBottom> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView(
-        children: <Widget>[const DoctorDashboard(), ShowBooking(), const DoctorCounter()],
+        children: const <Widget>[DoctorDashboard(), ShowBooking(), DoctorCounter()],
         controller: pageController,
         onPageChanged: onPageChanged,
         physics: const NeverScrollableScrollPhysics(),

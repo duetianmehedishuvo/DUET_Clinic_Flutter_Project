@@ -1,6 +1,6 @@
-import 'package:clinico/pages/patientDashboard/notification.dart';
-import 'package:clinico/pages/patientDashboard/patientDashboard.dart';
-import 'package:clinico/pages/patientDashboard/patientInfo.dart';
+import 'package:duet_clinic/pages/patientDashboard/notification.dart';
+import 'package:duet_clinic/pages/patientDashboard/patientDashboard.dart';
+import 'package:duet_clinic/pages/patientDashboard/patientInfo.dart';
 import 'package:flutter/material.dart';
 
 class Patientbottonbar extends StatefulWidget {
@@ -44,7 +44,7 @@ class _PatientbottonbarState extends State<Patientbottonbar> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView(
-        children: <Widget>[const PatientDashboard(), ShowNotification(), const PatientInfo()],
+        children: const <Widget>[PatientDashboard(), ShowNotification(), PatientInfo()],
         controller: pageController,
         onPageChanged: onPageChanged,
         physics: const NeverScrollableScrollPhysics(),

@@ -1,7 +1,7 @@
-import 'package:clinico/model/user.dart';
-import 'package:clinico/pages/doctorProfileForm.dart';
-import 'package:clinico/pages/patientDashboard/patientBottomBar.dart';
-import 'package:clinico/services/backend.dart';
+import 'package:duet_clinic/model/user.dart';
+import 'package:duet_clinic/pages/doctorProfileForm.dart';
+import 'package:duet_clinic/pages/patientDashboard/patientBottomBar.dart';
+import 'package:duet_clinic/services/backend.dart';
 import 'package:flutter/material.dart';
 
 late MyUser currentUser;
@@ -80,7 +80,7 @@ class Role extends StatelessWidget {
                   onPressed: () {
                     currentUser = user!;
                     currentUser.isDoctor = false;
-                    Backend().AddPatient(user!);
+                    Backend().addPatient(user!);
                     Navigator.pushReplacement(
                         context, MaterialPageRoute(builder: (BuildContext context) => const Patientbottonbar()));
                   },

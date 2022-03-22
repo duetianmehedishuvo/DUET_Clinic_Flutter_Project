@@ -1,7 +1,7 @@
-import 'package:clinico/model/user.dart';
-import 'package:clinico/pages/patientDashboard/bookAppointmentForm.dart';
-import 'package:clinico/services/backend.dart';
-import 'package:clinico/shared/loading.dart';
+import 'package:duet_clinic/model/user.dart';
+import 'package:duet_clinic/pages/patientDashboard/bookAppointmentForm.dart';
+import 'package:duet_clinic/services/backend.dart';
+import 'package:duet_clinic/shared/loading.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 

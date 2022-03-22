@@ -1,4 +1,4 @@
-import 'package:clinico/services/backend.dart';
+import 'package:duet_clinic/services/backend.dart';
 import 'package:flutter/material.dart';
 
 class PatientDashboard extends StatefulWidget {
@@ -31,7 +31,7 @@ class _PatientDashboardState extends State<PatientDashboard> {
   }
 
   showHospitalAccordingly(){
-     return showSearchResult?backend.SearchHospital(search):backend.showAllHospitalCard();
+     return showSearchResult?backend.searchHospital(search):backend.showAllHospitalCard();
   }
 
   TextEditingController searchController = TextEditingController();

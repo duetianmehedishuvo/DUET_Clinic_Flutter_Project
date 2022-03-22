@@ -1,5 +1,5 @@
-import 'package:clinico/model/user.dart';
-import 'package:clinico/pages/patientDashboard/hospitalProfile.dart';
+import 'package:duet_clinic/model/user.dart';
+import 'package:duet_clinic/pages/patientDashboard/hospitalProfile.dart';
 import 'package:flutter/material.dart';
 
 class HospitalCard extends StatelessWidget {

@@ -1,9 +1,9 @@
-import 'package:clinico/model/user.dart';
-import 'package:clinico/pages/doctorProfileForm.dart';
-import 'package:clinico/pages/role.dart';
-import 'package:clinico/services/auth.dart';
-import 'package:clinico/services/backend.dart';
-import 'package:clinico/shared/loading.dart';
+import 'package:duet_clinic/model/user.dart';
+import 'package:duet_clinic/pages/doctorProfileForm.dart';
+import 'package:duet_clinic/pages/role.dart';
+import 'package:duet_clinic/services/auth.dart';
+import 'package:duet_clinic/services/backend.dart';
+import 'package:duet_clinic/shared/loading.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 

@@ -1,4 +1,4 @@
-import 'package:clinico/model/user.dart';
+import 'package:duet_clinic/model/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -27,12 +27,10 @@ class AuthServices {
         idToken:_googleSignInAuthentication.idToken,
       );
 
-      print('shuvo');
 
       final UserCredential _authResult = await _auth.signInWithCredential(_credential);
       final User? _user = _authResult.user;
 
-      print('shuvo ${_user.toString()}');
 
       if(_user!=null)
       {
@@ -44,7 +42,6 @@ class AuthServices {
       }
       return '';
     }catch(e){
-      print('sjsjjs ${e.toString()}');
       return '';
     }
   }

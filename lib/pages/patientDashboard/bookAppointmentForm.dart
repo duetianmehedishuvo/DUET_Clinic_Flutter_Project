@@ -1,10 +1,10 @@
 import 'dart:io';
-import 'package:clinico/model/appointment.dart';
-import 'package:clinico/model/user.dart';
-import 'package:clinico/pages/patientDashboard/notification.dart';
-import 'package:clinico/pages/role.dart';
-import 'package:clinico/services/backend.dart';
-import 'package:clinico/shared/loading.dart';
+import 'package:duet_clinic/model/appointment.dart';
+import 'package:duet_clinic/model/user.dart';
+import 'package:duet_clinic/pages/patientDashboard/notification.dart';
+import 'package:duet_clinic/pages/role.dart';
+import 'package:duet_clinic/services/backend.dart';
+import 'package:duet_clinic/shared/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 

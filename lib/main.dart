@@ -1,7 +1,6 @@
-import 'package:clinico/model/user.dart';
-import 'package:clinico/pages/wrapper.dart';
-import 'package:clinico/services/auth.dart';
-import 'package:clinico/services/testProvider.dart';
+import 'package:duet_clinic/model/user.dart';
+import 'package:duet_clinic/pages/wrapper.dart';
+import 'package:duet_clinic/services/auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -13,7 +12,7 @@ void main() async {
   //   Provider<TestProvider>(create: (_) => TestProvider()),
   // ], child: MyApp()));
   //
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {

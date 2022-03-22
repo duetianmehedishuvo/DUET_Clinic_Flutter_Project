@@ -1,8 +1,8 @@
-import 'package:clinico/model/user.dart';
-import 'package:clinico/pages/doctorDashboard/doctorBottomBar.dart';
-import 'package:clinico/pages/role.dart';
-import 'package:clinico/services/backend.dart';
-import 'package:clinico/shared/loading.dart';
+import 'package:duet_clinic/model/user.dart';
+import 'package:duet_clinic/pages/doctorDashboard/doctorBottomBar.dart';
+import 'package:duet_clinic/pages/role.dart';
+import 'package:duet_clinic/services/backend.dart';
+import 'package:duet_clinic/shared/loading.dart';
 import 'package:flutter/material.dart';
 
 class DoctorProfileForm extends StatefulWidget {

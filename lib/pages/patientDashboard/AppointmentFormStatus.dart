@@ -1,6 +1,6 @@
-import 'package:clinico/model/appointment.dart';
-import 'package:clinico/services/backend.dart';
-import 'package:clinico/shared/loading.dart';
+import 'package:duet_clinic/model/appointment.dart';
+import 'package:duet_clinic/services/backend.dart';
+import 'package:duet_clinic/shared/loading.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 

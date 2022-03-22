@@ -1,5 +1,5 @@
-import 'package:clinico/pages/role.dart';
-import 'package:clinico/services/auth.dart';
+import 'package:duet_clinic/pages/role.dart';
+import 'package:duet_clinic/services/auth.dart';
 import 'package:flutter/material.dart';
 
 class PatientInfo extends StatelessWidget {

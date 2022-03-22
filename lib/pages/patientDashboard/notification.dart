@@ -1,5 +1,5 @@
-import 'package:clinico/pages/role.dart';
-import 'package:clinico/services/backend.dart';
+import 'package:duet_clinic/pages/role.dart';
+import 'package:duet_clinic/services/backend.dart';
 import 'package:flutter/material.dart';
 
 class ShowNotification extends StatelessWidget {

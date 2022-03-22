@@ -1,5 +1,5 @@
-import 'package:clinico/model/appointment.dart';
-import 'package:clinico/pages/doctorDashboard/confirmAppointment.dart';
+import 'package:duet_clinic/model/appointment.dart';
+import 'package:duet_clinic/pages/doctorDashboard/confirmAppointment.dart';
 import 'package:flutter/material.dart';
 
 class DocNotTile extends StatelessWidget {

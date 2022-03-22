@@ -1,5 +1,5 @@
-import 'package:clinico/pages/signin/signinbutton.dart';
-import 'package:clinico/shared/loading.dart';
+import 'package:duet_clinic/pages/signin/signinbutton.dart';
+import 'package:duet_clinic/shared/loading.dart';
 import 'package:flutter/material.dart';
 
 class SignInPage extends StatefulWidget {
@@ -12,7 +12,6 @@ class SignInPage extends StatefulWidget {
 class _SignInPageState extends State<SignInPage> {
   bool isLoading = false;
   void toggleLoading() {
-    print(isLoading);
     setState(() => isLoading = !isLoading);
   }
 
@@ -51,7 +50,7 @@ class _SignInPageState extends State<SignInPage> {
                     ),
                     Center(
                       child: Text(
-                        "Welcome to Clinico!",
+                        "Welcome to duet_clinic!",
                         style:
                             TextStyle(color: Colors.amber[300], fontSize: 40),
                       ),
