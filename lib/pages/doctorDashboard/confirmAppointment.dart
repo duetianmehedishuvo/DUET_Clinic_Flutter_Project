@@ -42,122 +42,63 @@ class _ConfirmAppointmentState extends State<ConfirmAppointment> {
     return isLoading
         ? const Loading()
         : Scaffold(
-          appBar: AppBar(
-            backgroundColor: Colors.indigo,
-            title: const Text('Appointment Status', style: TextStyle(color: Colors.white)),
-          ),
-          body: Padding(
-            padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(15, 8, 15, 8),
-              child: ListView(
-                children: [
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Center(
-                    child: Text(
-                      widget.appointment!.clinicName,
-                      style: const TextStyle(
-                        fontSize: 30,
+            appBar: AppBar(
+              backgroundColor: Colors.teal,
+              title: const Text('Appointment Status', style: TextStyle(color: Colors.white)),
+            ),
+            body: Padding(
+              padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(15, 8, 15, 8),
+                child: ListView(
+                  children: [
+                    const SizedBox(height: 20),
+                    Center(
+                      child: Text(widget.appointment!.clinicName, style: const TextStyle(fontSize: 30)),
+                    ),
+                    const SizedBox(height: 20),
+                    const Divider(),
+                    const SizedBox(height: 30),
+                    Text('Name : ' + widget.appointment!.name, style: const TextStyle(fontSize: 18)),
+                    const SizedBox(height: 30),
+                    Text('Age : ' + widget.appointment!.age.toString(), style: const TextStyle(fontSize: 18)),
+                    const SizedBox(height: 30),
+                    Text('Gender : ' + widget.appointment!.gender, style: const TextStyle(fontSize: 18)),
+                    const SizedBox(height: 30),
+                    const Text('Comments : ', style: TextStyle(fontSize: 18)),
+                    const SizedBox(height: 10),
+                    Text(widget.appointment!.comment, style: const TextStyle(fontSize: 18)),
+                    const SizedBox(height: 30),
+                    const Text('Payment Screenshot : ', style: TextStyle(fontSize: 18)),
+                    const SizedBox(height: 20),
+                    Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [Image.network(widget.appointment!.stringimage, height: 800)]),
+                    const SizedBox(height: 20),
+                    TextFormField(
+                      controller: appointmentNumberController,
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Colors.grey[50],
+                        hintText: "allot an appointment number to this patient",
+                        border: const OutlineInputBorder(),
+                        labelText: "Enter an Appointment Number",
+                        errorText: validAppointmentNumber ? null : "Appointment number can't be empty",
                       ),
                     ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  const Divider(),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  Text(
-                    'Name : ' + widget.appointment!.name,
-                    style: const TextStyle(
-                      fontSize: 18,
+                    const SizedBox(height: 50),
+                    FlatButton(
+                      child: const Text('Confirm', style: TextStyle(color: Colors.white, fontSize: 18)),
+                      color: Colors.teal,
+                      onPressed: () {
+                        confirmAppointmentNumber();
+                      },
                     ),
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  Text(
-                    'Age : ' + widget.appointment!.age.toString(),
-                    style: const TextStyle(
-                      fontSize: 18,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  Text(
-                    'Gender : ' + widget.appointment!.gender,
-                    style: const TextStyle(
-                      fontSize: 18,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  const Text(
-                    'Comments : ',
-                    style: TextStyle(
-                      fontSize: 18,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    widget.appointment!.comment,
-                    style: const TextStyle(
-                      fontSize: 18,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  const Text(
-                    'Payment Screenshot : ',
-                    style: TextStyle(
-                      fontSize: 18,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Image.network(
-                        widget.appointment!.stringimage,
-                        height: 800,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 20),
-                  TextFormField(
-                    controller: appointmentNumberController,
-                    keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Colors.grey[50],
-                      hintText: "allot an appointment number to this patient",
-                      border: const OutlineInputBorder(),
-                      labelText: "Enter an Appointment Number",
-                      errorText: validAppointmentNumber ? null : "Appointment number can't be empty",
-                    ),
-                  ),
-                  const SizedBox(height: 50),
-                  FlatButton(
-                    child: const Text('Confirm', style: TextStyle(color: Colors.white, fontSize: 18)),
-                    color: Colors.indigoAccent,
-                    onPressed: () {
-                      confirmAppointmentNumber();
-                    },
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
-        );
+          );
   }
 }

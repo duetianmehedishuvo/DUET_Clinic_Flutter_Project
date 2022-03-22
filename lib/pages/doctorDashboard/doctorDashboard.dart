@@ -48,223 +48,93 @@ class _DoctorDashboardState extends State<DoctorDashboard> {
     return isLoading
         ? const Loading()
         : Scaffold(
-          appBar: AppBar(
-            title: Text(doctor!.clinicName!),
-            backgroundColor: Colors.indigo,
-          ),
-          body: Padding(
-            padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
-            child: ListView(
-              children: [
-                const SizedBox(
-                  height: 40,
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.only(top: 20),
-                    child: CircleAvatar(
-                      backgroundImage: NetworkImage(doctor!.photoURL!),
-                      radius: 40,
-                    ),
+            appBar: AppBar(title: Text(doctor!.clinicName!), backgroundColor: Colors.teal),
+            body: Padding(
+              padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
+              child: ListView(
+                children: [
+                  const SizedBox(height: 40),
+                  Center(
+                    child: Container(
+                        margin: const EdgeInsets.only(top: 20),
+                        child: CircleAvatar(backgroundImage: NetworkImage(doctor!.photoURL!), radius: 40)),
                   ),
-                ),
-                Container(
-                    alignment: Alignment.topRight,
-                    padding: const EdgeInsets.only(right: 10),
-                    child: ClipOval(
-                      child: Material(
-                        color: Colors.transparent, // button color
-                        elevation: 0.0,
-                        child: InkWell(
-                          splashColor: Colors.blueGrey, // inkwell color
-                          child: const SizedBox(
-                              width: 50,
-                              height: 50,
-                              child: Icon(
-                                Icons.edit,
-                                size: 25,
-                              )),
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => DoctorProfileForm(doctor: doctor, isEdit: true)));
-                          },
-                        ),
-                      ),
-                    )),
-                Center(
-                  child: Text(
-                    doctor!.clinicName!,
-                    style: const TextStyle(
-                      fontSize: 30,
-                      fontStyle: FontStyle.italic,
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                const Divider(),
-                const SizedBox(
-                  height: 30,
-                ),
-                Card(
-                    child: Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Column(
-                    children: [
-                      Center(
-                        child: Text(
-                          'Dr. ' + doctor!.displayName!,
-                          style: const TextStyle(
-                            fontSize: 24,
+                  Container(
+                      alignment: Alignment.topRight,
+                      padding: const EdgeInsets.only(right: 10),
+                      child: ClipOval(
+                        child: Material(
+                          color: Colors.transparent, // button color
+                          elevation: 0.0,
+                          child: InkWell(
+                            splashColor: Colors.blueGrey, // inkwell color
+                            child: const SizedBox(width: 50, height: 50, child: Icon(Icons.edit, size: 25)),
+                            onTap: () {
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) => DoctorProfileForm(doctor: doctor, isEdit: true)));
+                            },
                           ),
                         ),
-                      ),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      Center(
-                        child: Text(
-                          doctor!.educationalQualification!,
-                          style: const TextStyle(
-                            fontSize: 24,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      Text(
-                        doctor!.bio!,
-                        style: const TextStyle(
-                          fontSize: 20,
-                        ),
-                      ),
-                    ],
-                  ),
-                )),
-                const SizedBox(
-                  height: 10,
-                ),
-                Card(
-                  child: Padding(
-                      padding: const EdgeInsets.all(20),
-                      child: Column(
-                        children: [
-                          const Center(
-                            child: Text(
-                              'Address : ',
-                              style: TextStyle(
-                                fontSize: 24,
-                                color: Colors.black54,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Center(
-                            child: Text(
-                              doctor!.address!,
-                              style: const TextStyle(
-                                fontSize: 20,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 30,
-                          ),
-                          const Center(
-                            child: Text(
-                              'Timing : ',
-                              style: TextStyle(
-                                fontSize: 24,
-                                color: Colors.black54,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Center(
-                            child: Text(
-                              doctor!.timing!,
-                              style: const TextStyle(
-                                fontSize: 20,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 30,
-                          ),
-                          const Center(
-                            child: Text(
-                              'UPI Id : ',
-                              style: TextStyle(
-                                fontSize: 24,
-                                color: Colors.black54,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Center(
-                            child: Text(
-                              doctor!.paymentMethod!,
-                              style: const TextStyle(
-                                fontSize: 20,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 30,
-                          ),
-                          const Center(
-                            child: Text(
-                              'Fees : ',
-                              style: TextStyle(
-                                fontSize: 24,
-                                color: Colors.black54,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Center(
-                            child: Text(
-                              doctor!.fee! + ' rs. at clinic',
-                              style: const TextStyle(
-                                fontSize: 20,
-                              ),
-                            ),
-                          ),
-                        ],
                       )),
-                ),
-                const SizedBox(
-                  height: 70,
-                ),
-                Center(
-                  child: RaisedButton(
-                    child: const Text(
-                      "Log Out",
-                      style: TextStyle(fontSize: 16, color: Colors.white),
+                  Center(
+                      child: Text(doctor!.clinicName!, style: const TextStyle(fontSize: 30, fontStyle: FontStyle.italic))),
+                  const SizedBox(height: 30),
+                  const Divider(),
+                  const SizedBox(height: 30),
+                  Card(
+                      child: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Column(
+                      children: [
+                        Center(child: Text('Dr. ' + doctor!.displayName!, style: const TextStyle(fontSize: 24))),
+                        const SizedBox(height: 30),
+                        Center(child: Text(doctor!.educationalQualification!, style: const TextStyle(fontSize: 24))),
+                        const SizedBox(height: 30),
+                        Text(doctor!.bio!, style: const TextStyle(fontSize: 20))
+                      ],
                     ),
-                    onPressed: () {
-                      // Navigator.pop(context);
-                      AuthServices().signOutGoogle();
-                    },
-                    color: Colors.teal,
+                  )),
+                  const SizedBox(height: 10),
+                  Card(
+                    child: Padding(
+                        padding: const EdgeInsets.all(20),
+                        child: Column(
+                          children: [
+                            const Center(child: Text('Address : ', style: TextStyle(fontSize: 24, color: Colors.black54))),
+                            const SizedBox(height: 10),
+                            Center(child: Text(doctor!.address!, style: const TextStyle(fontSize: 20))),
+                            const SizedBox(height: 30),
+                            const Center(child: Text('Timing : ', style: TextStyle(fontSize: 24, color: Colors.black54))),
+                            const SizedBox(height: 10),
+                            Center(child: Text(doctor!.timing!, style: const TextStyle(fontSize: 20))),
+                            const SizedBox(height: 30),
+                            const Center(child: Text('UPI Id : ', style: TextStyle(fontSize: 24, color: Colors.black54))),
+                            const SizedBox(height: 10),
+                            Center(child: Text(doctor!.paymentMethod!, style: const TextStyle(fontSize: 20))),
+                            const SizedBox(height: 30),
+                            const Center(child: Text('Fees : ', style: TextStyle(fontSize: 24, color: Colors.black54))),
+                            const SizedBox(height: 10),
+                            Center(child: Text(doctor!.fee! + ' rs. at clinic', style: const TextStyle(fontSize: 20))),
+                          ],
+                        )),
                   ),
-                ),
-                const SizedBox(height: 30)
-              ],
+                  const SizedBox(height: 70),
+                  Center(
+                    child: RaisedButton(
+                        child: const Text(
+                          "Log Out",
+                          style: TextStyle(fontSize: 16, color: Colors.white),
+                        ),
+                        onPressed: () {
+                          // Navigator.pop(context);
+                          AuthServices().signOutGoogle();
+                        },
+                        color: Colors.teal),
+                  ),
+                  const SizedBox(height: 30)
+                ],
+              ),
             ),
-          ),
-        );
+          );
   }
 }

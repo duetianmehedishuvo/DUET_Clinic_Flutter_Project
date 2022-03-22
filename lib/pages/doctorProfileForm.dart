@@ -84,7 +84,7 @@ class _DoctorProfileFormState extends State<DoctorProfileForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.indigo,
+        backgroundColor: Colors.teal,
         title: Text(widget.isEdit ? "Edit Your Profile" : "Create Your Profile"),
       ),
       body: isLoading
@@ -98,17 +98,14 @@ class _DoctorProfileFormState extends State<DoctorProfileForm> {
                     child: Container(
                       margin: const EdgeInsets.only(top: 20),
                       child: CircleAvatar(
-                        backgroundImage:
-                            NetworkImage(widget.isEdit ? widget.doctor!.photoURL! : widget.user!.photoURL),
-                        radius: 50,
-                      ),
+                          backgroundImage: NetworkImage(widget.isEdit ? widget.doctor!.photoURL! : widget.user!.photoURL),
+                          radius: 50),
                     ),
                   ),
                   Center(
-                    child: Container(
-                        margin: const EdgeInsets.only(top: 20),
-                        child: Text(widget.isEdit ? widget.doctor!.displayName! : widget.user!.displayName)),
-                  ),
+                      child: Container(
+                          margin: const EdgeInsets.only(top: 20),
+                          child: Text(widget.isEdit ? widget.doctor!.displayName! : widget.user!.displayName))),
                   Center(
                     child: Container(
                         margin: const EdgeInsets.only(top: 20),
@@ -205,25 +202,16 @@ class _DoctorProfileFormState extends State<DoctorProfileForm> {
                   const SizedBox(height: 40),
                   GestureDetector(
                     child: Container(
-                      alignment: Alignment.center,
-                      width: MediaQuery.of(context).size.width,
-                      padding: const EdgeInsets.symmetric(vertical: 12),
-                      decoration: const BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                            offset: Offset(3.0, 3.0),
-                            color: Colors.grey,
-                            blurRadius: 4.0,
-                            spreadRadius: 2.0,
-                          )
-                        ],
-
-                      ),
-                      child: Text(
-                        widget.isEdit ? "Edit" : "Submit",
-                        style: const TextStyle(color: Colors.white, fontSize: 18),
-                      ),
-                    ),
+                        alignment: Alignment.center,
+                        width: MediaQuery.of(context).size.width,
+                        padding: const EdgeInsets.symmetric(vertical: 12),
+                        decoration: const BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(offset: Offset(3.0, 3.0), color: Colors.teal, blurRadius: 4.0, spreadRadius: 2.0)
+                          ],
+                        ),
+                        child: Text(widget.isEdit ? "Edit" : "Submit",
+                            style: const TextStyle(color: Colors.white, fontSize: 18))),
                     onTap: () {
                       saveDoctorDetail();
                     },

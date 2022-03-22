@@ -52,7 +52,7 @@ class _DoctorBottomState extends State<DoctorBottom> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: pageIndex,
         unselectedItemColor: Colors.grey[700],
-        selectedItemColor: Colors.indigo,
+        selectedItemColor: Colors.teal,
         onTap: onTap,
         items: const [
           BottomNavigationBarItem(
