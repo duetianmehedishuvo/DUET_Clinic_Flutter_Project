@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         catchError: (_, __) => MyUser(),
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'Flutter Demo',
+          title: 'DUET Clinic',
           theme: ThemeData(
             primarySwatch: Colors.teal,
             visualDensity: VisualDensity.adaptivePlatformDensity,

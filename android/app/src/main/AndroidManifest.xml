@@ -1,7 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.lifesaver">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
    <application
-        android:label="firebase_practice"
+        android:label="DUET Clinic"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
