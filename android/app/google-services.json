@@ -1,0 +1,92 @@
+{
+  "project_info": {
+    "project_number": "280770965330",
+    "project_id": "life-saver-69484",
+    "storage_bucket": "life-saver-69484.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:280770965330:android:c4ea8788df02e43513148b",
+        "android_client_info": {
+          "package_name": "com.example.firebasePractice.firebase_practice"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "280770965330-rfhsc1i741mq3j4obr0kp6ioampp4itk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.firebasePractice.firebase_practice",
+            "certificate_hash": "b91dd340d397be274db14758b819a34e1b0db364"
+          }
+        },
+        {
+          "client_id": "280770965330-58eal1udkhorm1dt65lg9oh8tn5l122o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVHyzBMhXlI2-_q2SW5vv11fWI3UmuVEE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "280770965330-58eal1udkhorm1dt65lg9oh8tn5l122o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:280770965330:android:b9ef1634080ef24113148b",
+        "android_client_info": {
+          "package_name": "com.example.lifesaver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "280770965330-bbsr397fpro5ullhvcinaqjqaarmf3si.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.lifesaver",
+            "certificate_hash": "86291e340bc6ea082fa00c17a8512f0737fad26c"
+          }
+        },
+        {
+          "client_id": "280770965330-f9tk6rsfaqniks9enuiu8r8bvf2095ch.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.lifesaver",
+            "certificate_hash": "b91dd340d397be274db14758b819a34e1b0db364"
+          }
+        },
+        {
+          "client_id": "280770965330-58eal1udkhorm1dt65lg9oh8tn5l122o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVHyzBMhXlI2-_q2SW5vv11fWI3UmuVEE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "280770965330-58eal1udkhorm1dt65lg9oh8tn5l122o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
