@@ -50,10 +50,7 @@ class _HospitalProfileState extends State<HospitalProfile> {
     return isLoading
         ? const Loading()
         : Scaffold(
-            appBar: AppBar(
-              title: Text(doctor!.clinicName!),
-              backgroundColor: Colors.indigo,
-            ),
+            appBar: AppBar(title: Text(doctor!.clinicName!), backgroundColor: Colors.teal),
             body: Padding(
               padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
               child: ListView(
@@ -103,7 +100,7 @@ class _HospitalProfileState extends State<HospitalProfile> {
                   Center(
                     child: FlatButton(
                       onPressed: () {},
-                      color: Colors.indigo[400],
+                      color: Colors.teal[400],
                       child: Text(doctor!.counter.toString(), style: const TextStyle(fontSize: 24, color: Colors.white)),
                     ),
                   ),
@@ -248,7 +245,7 @@ class _HospitalProfileState extends State<HospitalProfile> {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(20, 8, 20, 8),
                     child: FlatButton(
-                      color: Colors.indigoAccent,
+                      color: Colors.teal,
                       child: const Padding(
                         padding: EdgeInsets.all(10),
                         child: Text(

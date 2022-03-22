@@ -258,7 +258,7 @@ class _DoctorDashboardState extends State<DoctorDashboard> {
                       // Navigator.pop(context);
                       AuthServices().signOutGoogle();
                     },
-                    color: Colors.indigo,
+                    color: Colors.teal,
                   ),
                 ),
                 const SizedBox(height: 30)

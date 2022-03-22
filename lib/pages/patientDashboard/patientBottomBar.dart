@@ -52,7 +52,7 @@ class _PatientbottonbarState extends State<Patientbottonbar> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: pageIndex,
         unselectedItemColor: Colors.grey[700],
-        selectedItemColor: Colors.indigo,
+        selectedItemColor: Colors.teal,
         onTap: onTap,
         items: const [
           BottomNavigationBarItem(

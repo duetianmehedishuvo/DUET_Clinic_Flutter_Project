@@ -9,7 +9,7 @@ class PatientInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.grey[100],
-        appBar: AppBar(backgroundColor:Colors.indigo,title:const Text("Profile")),
+        appBar: AppBar(backgroundColor:Colors.teal,title:const Text("Profile")),
         body:ListView(
             children: [
               Center(
@@ -48,7 +48,7 @@ class PatientInfo extends StatelessWidget {
                     // Navigator.pop(context);
                     AuthServices().signOutGoogle();
                   },
-                  color: Colors.indigo,
+                  color: Colors.teal,
                 )
               )
             ]

@@ -8,8 +8,7 @@ class ShowNotification extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title:const Text("Your Appointment"),backgroundColor: Colors.indigo,),
-      body:Backend().showPatientNotification(currentUser.uid)
-    );
+        appBar: AppBar(title: const Text("Your Appointment"), backgroundColor: Colors.teal),
+        body: Backend().showPatientNotification(currentUser.uid));
   }
 }
