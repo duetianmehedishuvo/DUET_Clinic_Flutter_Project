@@ -16,14 +16,13 @@ var uuid = const Uuid();
 
 FirebaseStorage storageRef = FirebaseStorage.instance;
 final CollectionReference doctorCollection = FirebaseFirestore.instance.collection('doctors');
-final CollectionReference doctorCollection1 = FirebaseFirestore.instance.collection('doctors1');
 final CollectionReference patientCollection = FirebaseFirestore.instance.collection('patients');
-final CollectionReference patientCollection1 = FirebaseFirestore.instance.collection('patients1');
 final CollectionReference doctorNotificationCollection = FirebaseFirestore.instance.collection('doctornotification');
 
 class Backend {
-  Future<void> addDoctorInDataBase(Doctor doctor,String category) async {
-    await doctorCollection.doc(doctor.uid).set({
+  Future<void> addDoctorInDataBase(Doctor doctor, String category) async {
+
+    await doctorCollection.doc(category).collection(category).doc(doctor.uid).set({
       "clinicName": doctor.clinicName,
       "educationalQualification": doctor.educationalQualification,
       "timing": doctor.timing,
@@ -37,28 +36,11 @@ class Backend {
       "searchedText": doctor.clinicName!.toLowerCase(),
       "counter": 0
     });
-
-
-    await doctorCollection1.doc(category).collection(category).doc(doctor.uid).set({
-      "clinicName": doctor.clinicName,
-      "educationalQualification": doctor.educationalQualification,
-      "timing": doctor.timing,
-      "address": doctor.address,
-      "fee": doctor.fee,
-      "paymentMethod": doctor.paymentMethod,
-      "bio": doctor.bio,
-      "displayName": doctor.displayName,
-      "email": doctor.email,
-      "photoURL": doctor.photoURL,
-      "searchedText": doctor.clinicName!.toLowerCase(),
-      "counter": 0
-    });
-
-
   }
 
-  Future<void> updateDoctorData(Doctor doctor,String category) async {
-    await doctorCollection.doc(doctor.uid).update({
+  Future<void> updateDoctorData(Doctor doctor, String category) async {
+
+    await doctorCollection.doc(category).collection(category).doc(doctor.uid).update({
       "clinicName": doctor.clinicName,
       "educationalQualification": doctor.educationalQualification,
       "timing": doctor.timing,
@@ -68,19 +50,6 @@ class Backend {
       "bio": doctor.bio,
       "searchedText": doctor.clinicName!.toLowerCase(),
     });
-
-
-    await doctorCollection1.doc(category).collection(category).doc(doctor.uid).update({
-      "clinicName": doctor.clinicName,
-      "educationalQualification": doctor.educationalQualification,
-      "timing": doctor.timing,
-      "address": doctor.address,
-      "fee": doctor.fee,
-      "paymentMethod": doctor.paymentMethod,
-      "bio": doctor.bio,
-      "searchedText": doctor.clinicName!.toLowerCase(),
-    });
-
   }
 
   Future<void> bookAppointment(Appointment appoint, String doctorId, String patientId) async {
@@ -116,9 +85,9 @@ class Backend {
     });
   }
 
-  showAllHospitalCard() {
+  showAllHospitalCard1(String category) {
     return StreamBuilder(
-        stream: doctorCollection.snapshots(),
+        stream: doctorCollection.doc(category).collection(category).snapshots(),
         builder: (context, AsyncSnapshot snapshot) {
           if (!snapshot.hasData) {
             return const Loading();
@@ -268,10 +237,9 @@ class Backend {
           );
         });
   }
-
-  searchHospital(String key) {
+  searchHospital1(String key,String category) {
     return StreamBuilder(
-        stream: doctorCollection.where("searchedText", isGreaterThanOrEqualTo: key).snapshots(),
+        stream: doctorCollection.doc(category).collection(category).where("searchedText", isGreaterThanOrEqualTo: key).snapshots(),
         builder: (context, AsyncSnapshot snapshot) {
           if (!snapshot.hasData) {
             return const Loading();
@@ -301,9 +269,10 @@ class Backend {
                     padding: EdgeInsets.all(13.0),
                     child: Center(
                         child: Text("Look like there is no great match according to your search.",
-                            style: TextStyle(fontSize: 18)))),
+                            textAlign: TextAlign.center,
+                            style: TextStyle(fontSize: 18,color: Colors.red)))),
                 const Center(child: Text("Other Hospital", style: TextStyle(fontSize: 18))),
-                showAllHospitalCard()
+                showAllHospitalCard1(category)
               ],
             );
           }
