@@ -2,8 +2,10 @@ import 'package:duet_clinic/model/user.dart';
 import 'package:duet_clinic/pages/doctorDashboard/doctorBottomBar.dart';
 import 'package:duet_clinic/pages/role.dart';
 import 'package:duet_clinic/services/backend.dart';
+import 'package:duet_clinic/services/testProvider.dart';
 import 'package:duet_clinic/shared/loading.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class DoctorProfileForm extends StatefulWidget {
   MyUser? user;
@@ -73,7 +75,9 @@ class _DoctorProfileFormState extends State<DoctorProfileForm> {
           displayName: widget.isEdit ? widget.doctor!.displayName : widget.user!.displayName,
           email: widget.isEdit ? widget.doctor!.email : widget.user!.email,
           photoURL: widget.isEdit ? widget.doctor!.photoURL : widget.user!.photoURL);
-      widget.isEdit ? await Backend().updateDoctorData(doctor) : await Backend().addDoctorInDataBase(doctor);
+      widget.isEdit
+          ? await Backend().updateDoctorData(doctor, Provider.of<TestProvider>(context,listen: false).selectCategory)
+          : await Backend().addDoctorInDataBase(doctor, Provider.of<TestProvider>(context,listen: false).selectCategory);
       Navigator.pop(context);
       Navigator.pop(context);
       Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const DoctorBottom()));
@@ -93,7 +97,6 @@ class _DoctorProfileFormState extends State<DoctorProfileForm> {
               padding: const EdgeInsets.symmetric(horizontal: 24),
               child: ListView(
                 children: [
-                  const SizedBox(height: 30),
                   Center(
                     child: Container(
                       margin: const EdgeInsets.only(top: 20),
@@ -111,7 +114,7 @@ class _DoctorProfileFormState extends State<DoctorProfileForm> {
                         margin: const EdgeInsets.only(top: 20),
                         child: Text(widget.isEdit ? widget.doctor!.email! : widget.user!.email)),
                   ),
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 20),
                   TextFormField(
                     controller: clinicNameController,
                     maxLines: null,
@@ -123,7 +126,28 @@ class _DoctorProfileFormState extends State<DoctorProfileForm> {
                         labelText: "Clinic Name",
                         errorText: validClinicName ? null : "Clinic Name can't be empty"),
                   ),
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 20),
+                  const FittedBox(
+                      child: Text('Please Select one which is on specialist you?',
+                          maxLines: 1, style: TextStyle(fontSize: 16))),
+                  Container(
+                    margin: const EdgeInsets.only(top: 13),
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                    decoration: BoxDecoration(border: Border.all(), borderRadius: BorderRadius.circular(4)),
+                    child: DropdownButton(
+                      value: Provider.of<TestProvider>(context).selectCategory,
+                      icon: const Icon(Icons.keyboard_arrow_down),
+                      underline: const SizedBox.shrink(),
+                      isExpanded: true,
+                      items: Provider.of<TestProvider>(context, listen: false).categoryLists.map((String items) {
+                        return DropdownMenuItem(value: items, child: Text(items));
+                      }).toList(),
+                      onChanged: (String? newValue) {
+                        Provider.of<TestProvider>(context, listen: false).changeSelectCategory(newValue!);
+                      },
+                    ),
+                  ),
+                  const SizedBox(height: 20),
                   TextFormField(
                     controller: educationalQualificationController,
                     keyboardType: TextInputType.multiline,
@@ -136,7 +160,7 @@ class _DoctorProfileFormState extends State<DoctorProfileForm> {
                       labelText: "Educational Qualifications",
                     ),
                   ),
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 20),
                   TextFormField(
                     controller: timingController,
                     keyboardType: TextInputType.multiline,
@@ -149,7 +173,7 @@ class _DoctorProfileFormState extends State<DoctorProfileForm> {
                         labelText: "Timing",
                         errorText: validTiming ? null : "Timing can't be empty"),
                   ),
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 20),
                   TextFormField(
                     controller: addressController,
                     keyboardType: TextInputType.multiline,
@@ -162,7 +186,7 @@ class _DoctorProfileFormState extends State<DoctorProfileForm> {
                         labelText: "Address",
                         errorText: validAdd ? null : "Address can't be empty"),
                   ),
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 20),
                   TextFormField(
                     controller: feeController,
                     decoration: InputDecoration(
@@ -173,7 +197,7 @@ class _DoctorProfileFormState extends State<DoctorProfileForm> {
                         labelText: "Fee",
                         errorText: validFee ? null : "Fees can't be empty"),
                   ),
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 20),
                   TextFormField(
                     controller: paymentMethodController,
                     keyboardType: TextInputType.multiline,
@@ -181,12 +205,12 @@ class _DoctorProfileFormState extends State<DoctorProfileForm> {
                     decoration: InputDecoration(
                         filled: true,
                         fillColor: Colors.grey[50],
-                        hintText: "Enter Your Upi Id.",
+                        hintText: "Enter Your Number.",
                         border: const OutlineInputBorder(),
                         labelText: "Payment Method",
-                        errorText: validPayMeth ? null : "PayMent Method can't be empty"),
+                        errorText: validPayMeth ? null : "Payment Method can't be empty"),
                   ),
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 20),
                   TextFormField(
                     controller: bioController,
                     keyboardType: TextInputType.multiline,
@@ -199,24 +223,20 @@ class _DoctorProfileFormState extends State<DoctorProfileForm> {
                       labelText: "Bio",
                     ),
                   ),
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 20),
                   GestureDetector(
                     child: Container(
                         alignment: Alignment.center,
                         width: MediaQuery.of(context).size.width,
                         padding: const EdgeInsets.symmetric(vertical: 12),
-                        decoration: const BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(offset: Offset(3.0, 3.0), color: Colors.teal, blurRadius: 4.0, spreadRadius: 2.0)
-                          ],
-                        ),
+                        decoration: BoxDecoration(color: Colors.teal, borderRadius: BorderRadius.circular(10)),
                         child: Text(widget.isEdit ? "Edit" : "Submit",
                             style: const TextStyle(color: Colors.white, fontSize: 18))),
                     onTap: () {
                       saveDoctorDetail();
                     },
                   ),
-                  const SizedBox(height: 40)
+                  const SizedBox(height: 20)
                 ],
               )),
     );
