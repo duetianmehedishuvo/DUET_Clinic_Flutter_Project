@@ -26,21 +26,27 @@ class _DoctorDashboardState extends State<DoctorDashboard> {
 
   void getDoctorDetails() async {
     setState(() => isLoading = true);
-    DocumentSnapshot? doc = await doctorCollection.doc(currentUser.uid).get();
-    doctor = Doctor(
-        address: doc["address"],
-        bio: doc["bio"],
-        clinicName: doc["clinicName"],
-        displayName: doc["displayName"],
-        educationalQualification: doc["educationalQualification"],
-        email: doc["email"],
-        fee: doc["fee"],
-        paymentMethod: doc["paymentMethod"],
-        photoURL: doc["photoURL"],
-        timing: doc["timing"],
-        uid: currentUser.uid,
-        counter: doc["counter"]);
-    setState(() => isLoading = false);
+
+    doctorShortCollection.doc(currentUser.uid).get().then((data) async {
+      DocumentSnapshot? doc =
+          await doctorCollection.doc(data['category']).collection(data['category']).doc(currentUser.uid).get();
+      categoryNameWhenUserLogin = data['category'];
+      doctor = Doctor(
+          address: doc["address"],
+          bio: doc["bio"],
+          clinicName: doc["clinicName"],
+          displayName: doc["displayName"],
+          educationalQualification: doc["educationalQualification"],
+          email: doc["email"],
+          fee: doc["fee"],
+          paymentMethod: doc["paymentMethod"],
+          photoURL: doc["photoURL"],
+          timing: doc["timing"],
+          uid: currentUser.uid,
+          counter: doc["counter"]);
+
+      setState(() => isLoading = false);
+    });
   }
 
   @override
@@ -108,13 +114,14 @@ class _DoctorDashboardState extends State<DoctorDashboard> {
                             const SizedBox(height: 10),
                             Center(child: Text(doctor!.timing!, style: const TextStyle(fontSize: 20))),
                             const SizedBox(height: 30),
-                            const Center(child: Text('UPI Id : ', style: TextStyle(fontSize: 24, color: Colors.black54))),
+                            const Center(
+                                child: Text('Payment Number : ', style: TextStyle(fontSize: 24, color: Colors.black54))),
                             const SizedBox(height: 10),
                             Center(child: Text(doctor!.paymentMethod!, style: const TextStyle(fontSize: 20))),
                             const SizedBox(height: 30),
                             const Center(child: Text('Fees : ', style: TextStyle(fontSize: 24, color: Colors.black54))),
                             const SizedBox(height: 10),
-                            Center(child: Text(doctor!.fee! + ' rs. at clinic', style: const TextStyle(fontSize: 20))),
+                            Center(child: Text(doctor!.fee! + ' taka. at clinic', style: const TextStyle(fontSize: 20))),
                           ],
                         )),
                   ),

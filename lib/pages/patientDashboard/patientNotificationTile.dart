@@ -1,6 +1,8 @@
 import 'package:duet_clinic/model/appointment.dart';
 import 'package:duet_clinic/pages/patientDashboard/AppointmentFormStatus.dart';
+import 'package:duet_clinic/services/testProvider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class PatNotTile extends StatelessWidget {
   Appointment? appointment;
@@ -20,7 +22,12 @@ class PatNotTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => AppointmentFormStatus(appointment: appointment!)));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => AppointmentFormStatus(
+                    appointment: appointment!,
+                    categoryName: Provider.of<TestProvider>(context, listen: false).selectCategory)));
       },
       child: Card(
           child: Padding(

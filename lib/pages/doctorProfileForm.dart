@@ -31,6 +31,9 @@ class _DoctorProfileFormState extends State<DoctorProfileForm> {
   @override
   void initState() {
     super.initState();
+
+
+
     if (widget.isEdit) {
       clinicNameController.text = widget.doctor!.clinicName!;
       educationalQualificationController.text = widget.doctor!.educationalQualification!;
@@ -75,6 +78,9 @@ class _DoctorProfileFormState extends State<DoctorProfileForm> {
           displayName: widget.isEdit ? widget.doctor!.displayName : widget.user!.displayName,
           email: widget.isEdit ? widget.doctor!.email : widget.user!.email,
           photoURL: widget.isEdit ? widget.doctor!.photoURL : widget.user!.photoURL);
+
+
+
       widget.isEdit
           ? await Backend().updateDoctorData(doctor, Provider.of<TestProvider>(context,listen: false).selectCategory)
           : await Backend().addDoctorInDataBase(doctor, Provider.of<TestProvider>(context,listen: false).selectCategory);

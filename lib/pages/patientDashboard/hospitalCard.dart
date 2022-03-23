@@ -1,11 +1,15 @@
 import 'package:duet_clinic/model/user.dart';
 import 'package:duet_clinic/pages/patientDashboard/hospitalProfile.dart';
+import 'package:duet_clinic/services/testProvider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HospitalCard extends StatelessWidget {
   double pad = 70;
   Doctor? doctor;
+
   HospitalCard({Key? key, this.doctor}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -15,6 +19,7 @@ class HospitalCard extends StatelessWidget {
             MaterialPageRoute(
               builder: (context) => HospitalProfile(
                 uid: doctor!.uid!,
+                categoryName: Provider.of<TestProvider>(context, listen: false).selectCategory,
               ),
             ));
       },

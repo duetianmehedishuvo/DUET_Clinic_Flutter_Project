@@ -1,4 +1,5 @@
 import 'package:duet_clinic/pages/role.dart';
+import 'package:duet_clinic/services/auth.dart';
 import 'package:duet_clinic/services/backend.dart';
 import 'package:duet_clinic/shared/loading.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -24,7 +25,12 @@ class _DoctorCounterState extends State<DoctorCounter> {
 
   void getDoctorDetails() async {
     setState(() => isLoading = true);
-    DocumentSnapshot doc = await doctorCollection.doc(currentUser.uid).get();
+
+    DocumentSnapshot doc = await doctorCollection
+        .doc(categoryNameWhenUserLogin)
+        .collection(categoryNameWhenUserLogin)
+        .doc(currentUser.uid)
+        .get();
 
     counter = doc["counter"];
     counterController.text = counter.toString();
@@ -32,7 +38,11 @@ class _DoctorCounterState extends State<DoctorCounter> {
   }
 
   updateValue(int val) async {
-    doctorCollection.doc(currentUser.uid).update({"counter": val});
+    doctorCollection
+        .doc(categoryNameWhenUserLogin)
+        .collection(categoryNameWhenUserLogin)
+        .doc(currentUser.uid)
+        .update({"counter": val});
     setState(() => counter = val);
     counterController.text = counter.toString();
   }

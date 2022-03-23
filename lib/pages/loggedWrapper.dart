@@ -29,7 +29,10 @@ class _LoggedWrapperState extends State<LoggedWrapper> {
   }
 
   void getInfo() async {
-    DocumentSnapshot docColl = await doctorCollection.doc(widget.user!.uid).get();
+
+
+
+    DocumentSnapshot docColl = await doctorShortCollection.doc(widget.user!.uid).get();
     bool temdoc = false, temPat = false;
     temdoc = docColl.exists;
     if (!temdoc) {

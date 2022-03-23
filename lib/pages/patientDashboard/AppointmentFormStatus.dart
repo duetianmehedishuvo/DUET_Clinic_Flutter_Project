@@ -8,8 +8,9 @@ class AppointmentFormStatus extends StatefulWidget {
   Appointment? appointment;
   String msg = '';
   int appointmentNumber = 0;
+  String categoryName='';
 
-  AppointmentFormStatus({Key? key, this.appointment}) : super(key: key) {
+  AppointmentFormStatus({Key? key, this.appointment,this.categoryName=''}) : super(key: key) {
     msg = appointment!.confirmed
         ? "Your Appointment Number is ${appointment!.appointmentNumber}"
         : "Your Appointment in ${appointment!.clinicName} is pending";
@@ -25,14 +26,14 @@ class _AppointmentFormStatusState extends State<AppointmentFormStatus> {
   @override
   void initState() {
     super.initState();
-    getAppointmentFormInfo();
+    getAppointmentFormInfo(widget.categoryName);
   }
 
-  void getAppointmentFormInfo() async {
+  void getAppointmentFormInfo(String categoryName) async {
     setState(() {
       isLoading = true;
     });
-    DocumentSnapshot doc = await doctorCollection.doc(widget.appointment!.doctorId).get();
+    DocumentSnapshot doc = await doctorCollection.doc(categoryName).collection(categoryName).doc(widget.appointment!.doctorId).get();
     widget.appointmentNumber = doc["counter"];
     setState(() => isLoading = false);
   }

@@ -16,12 +16,12 @@ var uuid = const Uuid();
 
 FirebaseStorage storageRef = FirebaseStorage.instance;
 final CollectionReference doctorCollection = FirebaseFirestore.instance.collection('doctors');
+final CollectionReference doctorShortCollection = FirebaseFirestore.instance.collection('doctors_short');
 final CollectionReference patientCollection = FirebaseFirestore.instance.collection('patients');
 final CollectionReference doctorNotificationCollection = FirebaseFirestore.instance.collection('doctornotification');
 
 class Backend {
   Future<void> addDoctorInDataBase(Doctor doctor, String category) async {
-
     await doctorCollection.doc(category).collection(category).doc(doctor.uid).set({
       "clinicName": doctor.clinicName,
       "educationalQualification": doctor.educationalQualification,
@@ -36,10 +36,13 @@ class Backend {
       "searchedText": doctor.clinicName!.toLowerCase(),
       "counter": 0
     });
+
+    await doctorShortCollection
+        .doc(doctor.uid)
+        .set({"id": doctor.uid, "category": category, "displayName": doctor.displayName});
   }
 
   Future<void> updateDoctorData(Doctor doctor, String category) async {
-
     await doctorCollection.doc(category).collection(category).doc(doctor.uid).update({
       "clinicName": doctor.clinicName,
       "educationalQualification": doctor.educationalQualification,
@@ -50,6 +53,8 @@ class Backend {
       "bio": doctor.bio,
       "searchedText": doctor.clinicName!.toLowerCase(),
     });
+
+    await doctorShortCollection.doc(doctor.uid).update({"category": category, "displayName": doctor.displayName});
   }
 
   Future<void> bookAppointment(Appointment appoint, String doctorId, String patientId) async {
@@ -237,9 +242,14 @@ class Backend {
           );
         });
   }
-  searchHospital1(String key,String category) {
+
+  searchHospital1(String key, String category) {
     return StreamBuilder(
-        stream: doctorCollection.doc(category).collection(category).where("searchedText", isGreaterThanOrEqualTo: key).snapshots(),
+        stream: doctorCollection
+            .doc(category)
+            .collection(category)
+            .where("searchedText", isGreaterThanOrEqualTo: key)
+            .snapshots(),
         builder: (context, AsyncSnapshot snapshot) {
           if (!snapshot.hasData) {
             return const Loading();
@@ -269,8 +279,7 @@ class Backend {
                     padding: EdgeInsets.all(13.0),
                     child: Center(
                         child: Text("Look like there is no great match according to your search.",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 18,color: Colors.red)))),
+                            textAlign: TextAlign.center, style: TextStyle(fontSize: 18, color: Colors.red)))),
                 const Center(child: Text("Other Hospital", style: TextStyle(fontSize: 18))),
                 showAllHospitalCard1(category)
               ],

@@ -7,8 +7,9 @@ import 'package:flutter/material.dart';
 
 class HospitalProfile extends StatefulWidget {
   String uid;
+  String categoryName;
 
-  HospitalProfile({Key? key, this.uid = ''}) : super(key: key);
+  HospitalProfile({Key? key, this.uid = '',this.categoryName=''}) : super(key: key);
 
   @override
   _HospitalProfileState createState() => _HospitalProfileState();
@@ -21,12 +22,12 @@ class _HospitalProfileState extends State<HospitalProfile> {
   @override
   void initState() {
     super.initState();
-    getDoctorDetails();
+    getDoctorDetails(widget.categoryName);
   }
 
-  void getDoctorDetails() async {
+  void getDoctorDetails(String categoryName) async {
     setState(() => isLoading = true);
-    DocumentSnapshot doc = await doctorCollection.doc(widget.uid).get();
+    DocumentSnapshot doc = await doctorCollection.doc(categoryName).collection(categoryName).doc(widget.uid).get();
 
     doctor = Doctor(
       address: doc["address"],
