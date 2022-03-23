@@ -22,6 +22,7 @@ class DocNotTile extends StatelessWidget {
                   builder: (context) => ConfirmAppointment(
                         appointment: appointment!,
                         msg: msg,
+                      isConfirmAppointment: appointment!.confirmed,
                       )));
         },
         child: Card(
