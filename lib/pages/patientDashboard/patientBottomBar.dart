@@ -55,11 +55,7 @@ class _PatientbottonbarState extends State<Patientbottonbar> {
         selectedItemColor: Colors.teal,
         onTap: onTap,
         items: const [
-          BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home,
-              ),
-              label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(icon: Icon(Icons.notifications_active), label: 'Notifications'),
           BottomNavigationBarItem(icon: Icon(Icons.account_circle), label: 'User'),
         ],

@@ -1,5 +1,6 @@
 import 'package:duet_clinic/model/user.dart';
 import 'package:duet_clinic/pages/doctorDashboard/doctorBottomBar.dart';
+import 'package:duet_clinic/pages/patientDashboard/dashboard_screen.dart';
 import 'package:duet_clinic/pages/patientDashboard/patientBottomBar.dart';
 import 'package:duet_clinic/pages/role.dart';
 import 'package:duet_clinic/services/backend.dart';
@@ -55,6 +56,10 @@ class _LoggedWrapperState extends State<LoggedWrapper> {
 
   @override
   Widget build(BuildContext context) {
-    return isLoading ? const Loading() : (isDoctor ? const DoctorBottom() : (isPatient ? const Patientbottonbar() : Role(user: widget.user)));
+    return isLoading ? const Loading() : (isDoctor ? const DoctorBottom() : (isPatient ? const DashboardScreen() : Role(user: widget.user)));
   }
+  // @override
+  // Widget build(BuildContext context) {
+  //   return isLoading ? const Loading() : (isDoctor ? const DoctorBottom() : (isPatient ? const Patientbottonbar() : Role(user: widget.user)));
+  // }
 }

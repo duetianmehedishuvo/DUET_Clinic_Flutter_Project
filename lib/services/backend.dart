@@ -39,7 +39,7 @@ class Backend {
 
     await doctorShortCollection
         .doc(doctor.uid)
-        .set({"id": doctor.uid, "category": category, "displayName": doctor.displayName});
+        .set({"id": doctor.uid, "category": category, "displayName": doctor.displayName, "clinicName": doctor.clinicName});
   }
 
   Future<void> updateDoctorData(Doctor doctor, String category) async {
@@ -54,7 +54,7 @@ class Backend {
       "searchedText": doctor.clinicName!.toLowerCase(),
     });
 
-    await doctorShortCollection.doc(doctor.uid).update({"category": category, "displayName": doctor.displayName});
+    await doctorShortCollection.doc(doctor.uid).update({"category": category, "displayName": doctor.displayName, "clinicName": doctor.clinicName});
   }
 
   Future<void> bookAppointment(Appointment appoint, String doctorId, String patientId) async {

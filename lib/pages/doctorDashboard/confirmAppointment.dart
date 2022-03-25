@@ -108,7 +108,7 @@ class _ConfirmAppointmentState extends State<ConfirmAppointment> {
                               confirmAppointmentNumber();
                             },
                           )
-                        : SizedBox.shrink(),
+                        : const SizedBox.shrink(),
                   ],
                 ),
               ),
