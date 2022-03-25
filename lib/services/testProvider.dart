@@ -1,3 +1,5 @@
+import 'package:duet_clinic/model/user.dart';
+import 'package:duet_clinic/services/backend.dart';
 import 'package:flutter/foundation.dart';
 
 List<String> categoryImageLists = [
@@ -32,5 +34,38 @@ class TestProvider with ChangeNotifier {
   changeSelectCategory(String category) {
     selectCategory = category;
     notifyListeners();
+  }
+
+  List<ShortDoctor> allShortDoctors = [];
+  List<ShortDoctor> allShortDoctorsTemp = [];
+  bool isLoading = false;
+
+  initializeAllShortDoctors() async {
+    allShortDoctors.clear();
+    allShortDoctorsTemp.clear();
+    isLoading = true;
+    allShortDoctors = [];
+    allShortDoctorsTemp = [];
+    allShortDoctors.addAll(await Backend.getShortDoctor());
+    allShortDoctorsTemp.addAll(await Backend.getShortDoctor());
+    isLoading = false;
+    notifyListeners();
+  }
+
+  searchAllShortDoctors(String query) {
+    if (query.isEmpty) {
+      allShortDoctors.clear();
+      allShortDoctors.addAll(allShortDoctorsTemp);
+      notifyListeners();
+    } else {
+      allShortDoctors = [];
+      allShortDoctorsTemp.forEach((doctorData) async {
+        if ((doctorData.clinicName!.toLowerCase().contains(query.toLowerCase())) ||
+            (doctorData.name!.toLowerCase().contains(query.toLowerCase()))) {
+          allShortDoctors.add(doctorData);
+        }
+      });
+      notifyListeners();
+    }
   }
 }

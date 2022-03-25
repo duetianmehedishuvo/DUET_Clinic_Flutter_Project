@@ -26,3 +26,17 @@ class Doctor {
       this.bio,
       this.counter});
 }
+
+class ShortDoctor{
+  String? uId,categoryName,name,clinicName,image;
+
+  ShortDoctor({this.uId, this.categoryName, this.name, this.clinicName,image});
+
+  ShortDoctor.fromMap(final map){
+    uId=map['id'];
+    categoryName=map['category'];
+    name=map['displayName'];
+    clinicName=map['clinicName'];
+    image=map['image'];
+  }
+}

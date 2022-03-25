@@ -66,6 +66,7 @@ class _PatientDashboardState extends State<PatientDashboard> {
               },
             ),
           ),
+
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 1),
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 1),

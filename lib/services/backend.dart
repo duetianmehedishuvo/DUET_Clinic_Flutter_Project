@@ -37,9 +37,13 @@ class Backend {
       "counter": 0
     });
 
-    await doctorShortCollection
-        .doc(doctor.uid)
-        .set({"id": doctor.uid, "category": category, "displayName": doctor.displayName, "clinicName": doctor.clinicName});
+    await doctorShortCollection.doc(doctor.uid).set({
+      "id": doctor.uid,
+      "category": category,
+      "displayName": doctor.displayName,
+      "clinicName": doctor.clinicName,
+      "image": doctor.photoURL,
+    });
   }
 
   Future<void> updateDoctorData(Doctor doctor, String category) async {
@@ -54,7 +58,9 @@ class Backend {
       "searchedText": doctor.clinicName!.toLowerCase(),
     });
 
-    await doctorShortCollection.doc(doctor.uid).update({"category": category, "displayName": doctor.displayName, "clinicName": doctor.clinicName});
+    await doctorShortCollection
+        .doc(doctor.uid)
+        .update({"category": category, "displayName": doctor.displayName, "clinicName": doctor.clinicName});
   }
 
   Future<void> bookAppointment(Appointment appoint, String doctorId, String patientId) async {
@@ -287,5 +293,10 @@ class Backend {
           }
           return Column(children: allHospital);
         });
+  }
+
+  static Future<List<ShortDoctor>> getShortDoctor() async {
+    QuerySnapshot snapshot = await doctorShortCollection.get();
+    return snapshot.docs.map((e) => ShortDoctor.fromMap(e.data())).toList();
   }
 }
