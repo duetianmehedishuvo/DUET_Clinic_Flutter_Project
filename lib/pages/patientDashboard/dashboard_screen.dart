@@ -1,4 +1,8 @@
 import 'package:duet_clinic/pages/patientDashboard/doctor_search_screen.dart';
+import 'package:duet_clinic/pages/patientDashboard/notification.dart';
+import 'package:duet_clinic/pages/patientDashboard/patientDashboard.dart';
+import 'package:duet_clinic/pages/patientDashboard/patientInfo.dart';
+import 'package:duet_clinic/pages/widgets/custom_button.dart';
 import 'package:duet_clinic/services/testProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -14,7 +18,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    Provider.of<TestProvider>(context,listen: false).initializeAllShortDoctors();
+    Provider.of<TestProvider>(context, listen: false).initializeAllShortDoctors();
     return Directionality(
       textDirection: TextDirection.ltr,
       child: Scaffold(
@@ -73,6 +77,31 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       ),
                     ),
                     const SizedBox(height: 20),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Row(
+                        children: [
+                          Expanded(
+                              child: CustomButton(
+                            btnTxt: 'Notifications',
+                            radius: 30,
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(builder: (_) => ShowNotification()));
+                            },
+                          )),
+                          SizedBox(width: 10),
+                          Expanded(
+                              child: CustomButton(
+                            btnTxt: 'User',
+                            radius: 30,
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(builder: (_) => PatientInfo()));
+                            },
+                          )),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 20),
                     Container(
                         padding: const EdgeInsets.symmetric(horizontal: 10),
                         child: const Text('Please Select A Category First Which Type Doctor do you want Find?',
@@ -85,26 +114,32 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                 crossAxisCount: 2, crossAxisSpacing: 20, mainAxisSpacing: 20, childAspectRatio: 1.1),
                             itemCount: testProvider.categoryLists.length,
                             physics: const BouncingScrollPhysics(),
-                            itemBuilder: (context, index) => Container(
-                                  alignment: Alignment.center,
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(10),
-                                    boxShadow: [
-                                      BoxShadow(
-                                          color: const Color(0xff05a317).withOpacity(.1),
-                                          offset: const Offset(0, 0),
-                                          blurRadius: 6,
-                                          spreadRadius: 2)
-                                    ],
-                                  ),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Image.asset(categoryImageLists[index], width: 50, height: 50, fit: BoxFit.fill),
-                                      const SizedBox(height: 10),
-                                      Text(testProvider.categoryLists[index])
-                                    ],
+                            itemBuilder: (context, index) => InkWell(
+                                  onTap: () {
+                                    Navigator.of(context).push(MaterialPageRoute(
+                                        builder: (_) => PatientDashboard(categoryType: testProvider.categoryLists[index])));
+                                  },
+                                  child: Container(
+                                    alignment: Alignment.center,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(10),
+                                      boxShadow: [
+                                        BoxShadow(
+                                            color: const Color(0xff05a317).withOpacity(.1),
+                                            offset: const Offset(0, 0),
+                                            blurRadius: 6,
+                                            spreadRadius: 2)
+                                      ],
+                                    ),
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Image.asset(categoryImageLists[index], width: 50, height: 50, fit: BoxFit.fill),
+                                        const SizedBox(height: 10),
+                                        Text(testProvider.categoryLists[index])
+                                      ],
+                                    ),
                                   ),
                                 )),
                       ),

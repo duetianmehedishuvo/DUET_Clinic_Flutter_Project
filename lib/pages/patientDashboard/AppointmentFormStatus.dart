@@ -73,15 +73,7 @@ class _AppointmentFormStatusState extends State<AppointmentFormStatus> {
                     const Text('Comments : ', style: TextStyle(fontSize: 18)),
                     const SizedBox(height: 10),
                     Text(widget.appointment!.comment, style: const TextStyle(fontSize: 18)),
-                    const SizedBox(height: 30),
-                    const Text('Payment Screenshot : ', style: TextStyle(fontSize: 18)),
-                    const SizedBox(height: 20),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Image.network(widget.appointment!.stringimage, height: 800),
-                      ],
-                    ),
+
                   ],
                 ),
               ),

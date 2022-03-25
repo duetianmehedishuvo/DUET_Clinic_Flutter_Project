@@ -96,9 +96,7 @@ class _ConfirmAppointmentState extends State<ConfirmAppointment> {
                     const SizedBox(height: 30),
                     const Text('Payment Screenshot : ', style: TextStyle(fontSize: 18)),
                     const SizedBox(height: 20),
-                    Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [Image.network(widget.appointment!.stringimage, height: 800)]),
+
                     const SizedBox(height: 50),
                     !widget.isConfirmAppointment
                         ? FlatButton(

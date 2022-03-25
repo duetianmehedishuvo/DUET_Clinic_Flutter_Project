@@ -1,10 +1,9 @@
 import 'dart:io';
 
 class Appointment {
-  String name, gender, comment, stringimage, clinicName, doctorId, patientId, patientAppointmentId, doctorAppointmentId;
+  String name, gender, comment,  clinicName, doctorId, patientId, patientAppointmentId, doctorAppointmentId;
   int age, appointmentNumber;
   bool confirmed;
-  File? image;
 
   Appointment(
       {this.name='',
@@ -14,9 +13,7 @@ class Appointment {
       this.comment='',
       this.age=0,
       this.patientId='',
-      this.image,
       this.doctorId='',
-      this.stringimage='',
       this.clinicName='',
       this.confirmed=false,
       this.appointmentNumber=0});

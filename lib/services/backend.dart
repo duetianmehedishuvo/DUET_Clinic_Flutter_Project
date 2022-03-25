@@ -65,15 +65,13 @@ class Backend {
 
   Future<void> bookAppointment(Appointment appoint, String doctorId, String patientId) async {
     final postID = uuid.v4();
-    var image = await compressImage(appoint.image, postID);
-    var let = await uploadImage(image, postID);
-    var media = let;
+
+
     await doctorCollection.doc(doctorId).collection("appointment").add({
       "name": appoint.name,
       "gender": appoint.gender,
       "age": appoint.age,
       "comment": appoint.comment,
-      "image": media,
       "confirmed": false,
       "appointmentNumber": 0,
       "time": DateTime.now().millisecondsSinceEpoch,
@@ -87,7 +85,6 @@ class Backend {
       "gender": appoint.gender,
       "age": appoint.age,
       "comment": appoint.comment,
-      "image": media,
       "confirmed": false,
       "appointmentNumber": 0,
       "time": DateTime.now().millisecondsSinceEpoch,
@@ -162,7 +159,6 @@ class Backend {
                 gender: doc.data()["gender"],
                 age: doc.data()["age"],
                 comment: doc.data()["comment"],
-                stringimage: doc.data()["image"],
                 confirmed: doc.data()["confirmed"],
                 appointmentNumber: doc.data()["appointmentNumber"],
                 clinicName: doc.data()["clinicName"],
@@ -208,7 +204,6 @@ class Backend {
                         gender: doc.data()["gender"],
                         age: doc.data()["age"],
                         comment: doc.data()["comment"],
-                        stringimage: doc.data()["image"],
                         confirmed: doc.data()["confirmed"],
                         appointmentNumber: doc.data()["appointmentNumber"],
                         clinicName: doc.data()["clinicName"],
@@ -222,7 +217,6 @@ class Backend {
                         gender: doc.data()["gender"],
                         age: doc.data()["age"],
                         comment: doc.data()["comment"],
-                        stringimage: doc.data()["image"],
                         confirmed: doc.data()["confirmed"],
                         appointmentNumber: doc.data()["appointmentNumber"],
                         clinicName: doc.data()["clinicName"],

@@ -23,16 +23,7 @@ class _BookAppointmentState extends State<BookAppointment> {
   TextEditingController commentController = TextEditingController();
   bool validName=true,validAge = true,validGender = true,isLoading = false;
 
-  File? image;
-  final picker = ImagePicker();
-  Future getImageFromGallery() async {
-    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
-    setState(() {
-      if (pickedFile != null) {
-        setState(()=>image = File(pickedFile.path));
-      }
-    });
-  }
+
 
   void bookAppointment()async{
     String name = nameController.text.trim();
@@ -44,7 +35,7 @@ class _BookAppointmentState extends State<BookAppointment> {
       validAge = age.isNotEmpty;
       validGender = gender.isNotEmpty;
     });
-    if(validName && validAge && validGender && image!=null){
+    if(validName && validAge && validGender){
       setState(()=>isLoading = true);
       Appointment appoit = Appointment(
         name:name,
@@ -52,7 +43,6 @@ class _BookAppointmentState extends State<BookAppointment> {
         gender: gender,
         comment: comment,
         clinicName:widget.doctor!.clinicName!,
-        image: image
       );
       await Backend().bookAppointment(appoit,widget.doctor!.uid!,currentUser.uid);
       Navigator.pop(context);
@@ -125,27 +115,8 @@ class _BookAppointmentState extends State<BookAppointment> {
               ),
             ),
             const SizedBox(height:40),
-            RaisedButton(
-              child:const Text("Upload ScreenShot of payment "),
-              onPressed: (){getImageFromGallery();},
 
-            ),
-            (image==null)
-            ?const Text("no file selected(required)")
-            :Hero(
-                  tag: "heroImage",
-                  child: AspectRatio(
-                      aspectRatio: 0.85,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          image:DecorationImage(
-                            image:FileImage(image!),
-                            fit:BoxFit.cover
-                          )
-                        ),
-                      ),
-                  )
-              ),
+
               RaisedButton(
                 child: const Text("Submit"),
                 onPressed: (){bookAppointment();},
