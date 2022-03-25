@@ -1,6 +1,6 @@
 import 'package:duet_clinic/model/user.dart';
 import 'package:duet_clinic/pages/doctorProfileForm.dart';
-import 'package:duet_clinic/pages/patientDashboard/patientBottomBar.dart';
+import 'package:duet_clinic/pages/patientDashboard/dashboard_screen.dart';
 import 'package:duet_clinic/services/backend.dart';
 import 'package:flutter/material.dart';
 
@@ -57,7 +57,7 @@ class Role extends StatelessWidget {
                     currentUser.isDoctor = false;
                     Backend().addPatient(user!);
                     Navigator.pushReplacement(
-                        context, MaterialPageRoute(builder: (BuildContext context) => const Patientbottonbar()));
+                        context, MaterialPageRoute(builder: (BuildContext context) => const DashboardScreen()));
                   },
                   fillColor: Colors.white,
                   splashColor: Colors.grey,
