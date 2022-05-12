@@ -1,4 +1,5 @@
 import 'package:duet_clinic/pages/patientDashboard/doctor_search_screen.dart';
+import 'package:duet_clinic/pages/patientDashboard/medicine_screen.dart';
 import 'package:duet_clinic/pages/patientDashboard/notification.dart';
 import 'package:duet_clinic/pages/patientDashboard/patientDashboard.dart';
 import 'package:duet_clinic/pages/patientDashboard/patientInfo.dart';
@@ -46,7 +47,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     const SizedBox(height: 20),
                     Container(
                         padding: const EdgeInsets.symmetric(horizontal: 10),
-                        child: const Text('Welcome to DUET Clinic',
+                        child: const Text('Welcome to Hello Doctor',
                             textAlign: TextAlign.end, style: TextStyle(color: Colors.green, fontSize: 25))),
                     const SizedBox(height: 20),
                     InkWell(
@@ -86,19 +87,30 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             btnTxt: 'Notifications',
                             radius: 30,
                             onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(builder: (_) => ShowNotification()));
+                              Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ShowNotification()));
                             },
                           )),
-                          SizedBox(width: 10),
+                          const SizedBox(width: 10),
                           Expanded(
                               child: CustomButton(
                             btnTxt: 'User',
                             radius: 30,
                             onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(builder: (_) => PatientInfo()));
+                              Navigator.of(context).push(MaterialPageRoute(builder: (_) => const PatientInfo()));
                             },
                           )),
                         ],
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: CustomButton(
+                        btnTxt: 'Find Medicine',
+                        radius: 30,
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(builder: (_) => const MedicineScreen()));
+                        },
                       ),
                     ),
                     const SizedBox(height: 20),

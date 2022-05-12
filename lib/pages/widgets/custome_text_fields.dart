@@ -28,6 +28,7 @@ class CustomTextField extends StatefulWidget {
   final bool? isEnabled;
   final TextCapitalization? capitalization;
   final bool isDoctorSearch;
+  final bool isMedicineSearch;
 
   const CustomTextField(
       {this.hintText = 'Write something...',
@@ -54,6 +55,7 @@ class CustomTextField extends StatefulWidget {
       this.prefixIconUrl,
       this.isSearch = false,
       this.isDoctorSearch = false,
+      this.isMedicineSearch = false,
       Key? key})
       : super(key: key);
 
@@ -131,6 +133,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
       onChanged: (value) {
         if (widget.isDoctorSearch) {
           Provider.of<TestProvider>(context, listen: false).searchAllShortDoctors(value);
+        }
+        if (widget.isMedicineSearch) {
+          Provider.of<TestProvider>(context, listen: false).searchMedicines(value);
         }
       },
     );

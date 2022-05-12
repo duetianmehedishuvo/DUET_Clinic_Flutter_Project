@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:duet_clinic/model/appointment.dart';
 import 'package:duet_clinic/model/user.dart';
 import 'package:duet_clinic/pages/patientDashboard/notification.dart';
@@ -6,7 +5,6 @@ import 'package:duet_clinic/pages/role.dart';
 import 'package:duet_clinic/services/backend.dart';
 import 'package:duet_clinic/shared/loading.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 
 class BookAppointment extends StatefulWidget {
   Doctor? doctor;

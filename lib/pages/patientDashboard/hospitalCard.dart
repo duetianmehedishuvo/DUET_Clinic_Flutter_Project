@@ -22,8 +22,8 @@ class HospitalCard extends StatelessWidget {
             ));
       },
       child: Container(
-        margin: EdgeInsets.only(bottom: 20,left: 16,right: 16),
-        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 14),
+        margin: const EdgeInsets.only(bottom: 20,left: 16,right: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 14),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
@@ -32,7 +32,7 @@ class HospitalCard extends StatelessWidget {
               color: Colors.grey.withOpacity(0.3),
               spreadRadius: 5,
               blurRadius: 7,
-              offset: Offset(0, 3), // changes position of shadow
+              offset: const Offset(0, 3), // changes position of shadow
             ),
           ],
         ),
@@ -43,16 +43,16 @@ class HospitalCard extends StatelessWidget {
             Container(
                 child: ClipRRect(
                     borderRadius: BorderRadius.circular(80), child: Image.network(doctor!.photoURL!, width: 50, height: 50))),
-            SizedBox(width: 10),
+            const SizedBox(width: 10),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Dr. ' + doctor!.displayName!, style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
-                  SizedBox(height: 2),
-                  Text(Provider.of<TestProvider>(context,listen: false).selectCategory, style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500)),
-                  SizedBox(height: 2),
-                  Text('clinic: ${doctor!.clinicName!}', style: TextStyle(fontSize: 17, fontWeight: FontWeight.normal)),
+                  Text('Dr. ' + doctor!.displayName!, style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
+                  const SizedBox(height: 2),
+                  Text(Provider.of<TestProvider>(context,listen: false).selectCategory, style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w500)),
+                  const SizedBox(height: 2),
+                  Text('clinic: ${doctor!.clinicName!}', style: const TextStyle(fontSize: 17, fontWeight: FontWeight.normal)),
                 ],
               ),
             )
@@ -113,8 +113,8 @@ class HospitalCard2 extends StatelessWidget {
                 builder: (context) => HospitalProfile(uid: doctor!.uId!, categoryName: doctor!.categoryName!)));
       },
       child: Container(
-        margin: EdgeInsets.only(bottom: 20),
-        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 14),
+        margin: const EdgeInsets.only(bottom: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 14),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
@@ -123,7 +123,7 @@ class HospitalCard2 extends StatelessWidget {
               color: Colors.grey.withOpacity(0.3),
               spreadRadius: 5,
               blurRadius: 7,
-              offset: Offset(0, 3), // changes position of shadow
+              offset: const Offset(0, 3), // changes position of shadow
             ),
           ],
         ),
@@ -134,16 +134,16 @@ class HospitalCard2 extends StatelessWidget {
             Container(
                 child: ClipRRect(
                     borderRadius: BorderRadius.circular(80), child: Image.network(doctor!.image!, width: 50, height: 50))),
-            SizedBox(width: 10),
+            const SizedBox(width: 10),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Dr. ' + doctor!.name!, style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
-                  SizedBox(height: 2),
-                  Text(doctor!.categoryName!, style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500)),
-                  SizedBox(height: 2),
-                  Text('clinic: ${doctor!.clinicName!}', style: TextStyle(fontSize: 17, fontWeight: FontWeight.normal)),
+                  Text('Dr. ' + doctor!.name!, style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
+                  const SizedBox(height: 2),
+                  Text(doctor!.categoryName!, style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w500)),
+                  const SizedBox(height: 2),
+                  Text('clinic: ${doctor!.clinicName!}', style: const TextStyle(fontSize: 17, fontWeight: FontWeight.normal)),
                 ],
               ),
             )

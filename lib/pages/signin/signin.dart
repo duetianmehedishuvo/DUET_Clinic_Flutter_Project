@@ -47,7 +47,7 @@ class _SignInPageState extends State<SignInPage> {
                       child: Center(
                         child: FittedBox(
                             child:
-                                Text("Welcome to DUET Clinic!", style: TextStyle(color: Colors.amber[300], fontSize: 40))),
+                                Text("Welcome to Hello Doctor!", style: TextStyle(color: Colors.amber[300], fontSize: 40))),
                       ),
                     ),
                     const SizedBox(height: 100),
